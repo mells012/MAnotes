@@ -1,34 +1,34 @@
 namespace Notes.Views;
 
-[QueryProperty(nameof(ItemId), nameof(ItemId))]
-public partial class NotePage : ContentPage
+[QueryProperty(nameof(MAitemId), nameof(MAitemId))]
+public partial class MAnotePage : ContentPage
 {
-    public string ItemId
+    public string MAitemId
     {
-        set { LoadNote(value); }
+        set { MAloadNote(value); }
     }
 
-    public NotePage()
+    public MAnotePage()
     {
         InitializeComponent();
 
         string appDataPath = FileSystem.AppDataDirectory;
         string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
 
-        LoadNote(Path.Combine(appDataPath, randomFileName));
+        MAloadNote(Path.Combine(appDataPath, randomFileName));
     }
 
-    private async void SaveButton_Clicked(object sender, EventArgs e)
+    private async void MAsaveButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Note note)
+        if (BindingContext is Models.MAnote note)
             File.WriteAllText(note.Filename, TextEditor.Text);
 
         await Shell.Current.GoToAsync("..");
     }
 
-    private async void DeleteButton_Clicked(object sender, EventArgs e)
+    private async void MAdeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Note note)
+        if (BindingContext is Models.MAnote note)
         {
             // Delete the file.
             if (File.Exists(note.Filename))
@@ -38,9 +38,9 @@ public partial class NotePage : ContentPage
         await Shell.Current.GoToAsync("..");
     }
 
-    private void LoadNote(string fileName)
+    private void MAloadNote(string fileName)
     {
-        Models.Note noteModel = new Models.Note();
+        Models.MAnote noteModel = new Models.MAnote();
         noteModel.Filename = fileName;
 
         if (File.Exists(fileName))

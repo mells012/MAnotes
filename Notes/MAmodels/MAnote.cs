@@ -1,6 +1,6 @@
 ﻿namespace Notes.Models;
 
-internal class Note
+internal class MAnote
 {
     public string Filename { get; set; }
     public string Text { get; set; }

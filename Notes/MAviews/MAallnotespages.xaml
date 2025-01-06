@@ -5,7 +5,7 @@
              Title="Your Notes">
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
+        <ToolbarItem Text="Add" Clicked="MAadd_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
     </ContentPage.ToolbarItems>
 
     <!-- Display notes in a list -->
@@ -13,7 +13,7 @@
                         ItemsSource="{Binding Notes}"
                         Margin="20"
                         SelectionMode="Single"
-                        SelectionChanged="notesCollection_SelectionChanged">
+                        SelectionChanged="MAnotesCollection_SelectionChanged">
 
         <!-- Designate how the collection of items are laid out -->
         <CollectionView.ItemsLayout>

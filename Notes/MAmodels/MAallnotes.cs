@@ -2,14 +2,14 @@
 
 namespace Notes.Models;
 
-internal class AllNotes
+internal class MAallnotes
 {
-    public ObservableCollection<Note> Notes { get; set; } = new ObservableCollection<Note>();
+    public ObservableCollection<MAnote> Notes { get; set; } = new ObservableCollection<MAnote>();
 
-    public AllNotes() =>
-        LoadNotes();
+    public MAallnotes() =>
+        MAloadNotes();
 
-    public void LoadNotes()
+    public void MAloadNotes()
     {
         Notes.Clear();
 
@@ -17,13 +17,13 @@ internal class AllNotes
         string appDataPath = FileSystem.AppDataDirectory;
 
         // Use Linq extensions to load the *.notes.txt files.
-        IEnumerable<Note> notes = Directory
+        IEnumerable<MAnote> notes = Directory
 
                                     // Select the file names from the directory
                                     .EnumerateFiles(appDataPath, "*.notes.txt")
 
                                     // Each file name is used to create a new Note
-                                    .Select(filename => new Note()
+                                    .Select(filename => new MAnote()
                                     {
                                         Filename = filename,
                                         Text = File.ReadAllText(filename),
@@ -34,7 +34,7 @@ internal class AllNotes
                                     .OrderBy(note => note.Date);
 
         // Add each note into the ObservableCollection
-        foreach (Note note in notes)
+        foreach (MAnote note in notes)
             Notes.Add(note);
     }
 }
